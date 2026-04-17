@@ -1,5 +1,3 @@
-#if 0
-
 #include <cstdlib>
 #include <vector>
 #include <algorithm>
@@ -71,7 +69,3 @@ RC_GTEST_PROP(CopyArrayTests,
   */
 
 }
-
-
-
-#endif
