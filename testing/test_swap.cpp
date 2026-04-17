@@ -39,12 +39,14 @@ RC_GTEST_PROP(SwapTests,
               PropertySwapTwoValues,
               (int a_start, int b_start)
 ) {
-  (void)a_start;
-  (void)b_start;
-
     /*
      * Swap two values and see if the swap was successful.
      */
+    int a = a_start;
+    int b = b_start;
+    swap(&a, &b);
+    RC_ASSERT(a == b_start);
+    RC_ASSERT(b == a_start);
 }
 
 
@@ -52,8 +54,27 @@ RC_GTEST_PROP(SwapTests,
               PropertySwapValuesInArray,
               (const std::vector<int>& values)
 ) {
-  (void)values;
+    //if there is only 1 index in the array it automatically passes
+    if (values.size() < 2) {
+        RC_SUCCEED();
+    }
 
+    int i = *rc::gen::inRange(0, static_cast<int>(values.size()));
+    int j = *rc::gen::inRange(0, static_cast<int>(values.size()));
+
+    auto original = values;
+    auto changedVector = values;
+
+    swap(&changedVector[i], &changedVector[j]);
+
+    RC_ASSERT(changedVector[i] == original[j]);
+    RC_ASSERT(changedVector[j] == original[i]);
+
+    for (size_t k = 0; k < values.size(); ++k) {
+        if (k != static_cast<size_t>(i) && k != static_cast<size_t>(j) ){
+            RC_ASSERT(changedVector[k] == original[k]);
+        }
+    }
     /*
      *
      * Swap two values in an array. See that they swapped and the others did not
