@@ -1,9 +1,9 @@
 # Google Test And Debugging Writeup
 
 ## Things I Thought To Test
-1. Thing 1
-2. Thing 2
-3. Thing 3
+1. Thing 1: I want to confirm whether the sorting algorith works in the first place.
+2. Thing 2: I want to make sure that the space being allocated by malloc is being allocated properly in the first place and is being freed once done with.
+3. Thing 3: Once the original numbers are stored, I want to make sure that the sorted array of numbers is the one being spit out at the end.
 ...
 
 ## Bugs
