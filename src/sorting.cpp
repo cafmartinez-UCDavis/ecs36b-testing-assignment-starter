@@ -27,6 +27,7 @@ void make_sorted(int* ar, int len) {
 }
 
 int* copy_array(int* ar, int len) {
+  (void)len;
   /**
   * Return a copy of the array
   * @param ar: The array to copy

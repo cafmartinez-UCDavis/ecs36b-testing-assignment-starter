@@ -8,30 +8,40 @@
 
 ## Bugs
 
-### Bug 1
+### Bug 1: multiple bugs before I could even test my first testing case, 
 
-### Location
+### Location: compiler issues in sorting.ccp and formatting.ccp
 
 Line number(s) of the bugs.
-
+Bug 1: sorting.ccp line 29, sorting. ccp line 36
 ```c++
-Copy of the buggy code
+bug 1: //int* copy_array(int* ar, int len) {
+    //sscanf(argv[i], "%d", ar_out[i]);
 ```
 
 ### How the bug was located
 
 Explain how you found the bug
 
+Bug 1: Located once I tried to run the test_swap.ccp file and found in the terminal telling me I had issues with the main code's signature(the code itself) and not just the logic
+
 ### Description
 
 Describe the bug
+
+Compiler issues when trying to run my first test case
 
 ### Fix 
 
 Explain how you fixed the bug
 
+I called len with dummy function just so the compiler would ignore it.
+Then I made ar_out[i] use a pointer instead of an int
+
 ```c++
-Copy of the fixed code
+Copy of the fixed code:
+//(void)len;
+//sscanf(argv[i], "%d", &ar_out[i]);
 ```
 
 ### Bug 2
