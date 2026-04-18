@@ -131,7 +131,7 @@ The code was not creating a copy of the array and just assigning something else 
 
 ### Fix
 
-Explain how you fixed the bug: i fixed the bug by fixing creating a copy array with memory allocated to it then itterating over the previous array and putting it into the new array index by index
+Explain how you fixed the bug: I fixed the bug by fixing creating a copy array with memory allocated to it then itterating over the previous array and putting it into the new array index by index
 
 ```c++
 Copy of the fixed code:
