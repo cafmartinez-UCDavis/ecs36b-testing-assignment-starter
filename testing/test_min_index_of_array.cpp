@@ -71,18 +71,59 @@ TEST(MinIndexOfArrayTests, SimpleArrayDoesNotChange) {
 
 RC_GTEST_PROP(MinIndexOfArrayTests,
               PropertyFindMinIndex,
-              ()) {
+              (const std::vector<int>& values)) {
     /* Check that the value at the location of the minimum index
      * is not larger than any of the other values in the array
      */
+    RC_PRE(!values.empty()); /*Copilot: way of making sure that test cases didnt give an empty array*/
+
+    int len = values.size();
+
+    int* ar = new int[len];
+    for (int i = 0; i < len; i++) {
+        ar[i] = values[i];
+    }
+
+    int idx = min_index_of_array(ar, len);
+
+    // 1. Index must be valid
+    RC_ASSERT(idx >= 0);
+    RC_ASSERT(idx < len);
+
+    // 2. Value at idx must be <= all others
+    for (int i = 0; i < len; i++) {
+        RC_ASSERT(ar[idx] <= ar[i]);
+    }
+
+    delete[] ar;
 }
 
 RC_GTEST_PROP(MinIndexOfArrayTests,
               PropertyArrayDoesNotChange,
-              ()) {
+              (const std::vector<int>& values)) {
     /*
      * Check that finding the minimum of the array did not change the contents of the array.
      */
+    RC_PRE(!values.empty());
+
+    int len = values.size();
+
+    int* ar = new int[len];
+    int* before = new int[len];
+
+    for (int i = 0; i < len; i++) {
+        ar[i] = values[i];
+        before[i] = values[i];
+    }
+
+    (void)min_index_of_array(ar, len);
+
+    for (int i = 0; i < len; i++) {
+        RC_ASSERT(ar[i] == before[i]);
+    }
+
+    delete[] ar;
+    delete[] before;
 }
 
 
