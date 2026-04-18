@@ -7,10 +7,7 @@
 #include "rapidcheck/gtest.h"
 
 auto word_generator() {
-  return rc::gen::container<std::string>(
-      rc::gen::inRange(1, 10),
-      rc::gen::inRange('a', 'z' + 1)
-  );
+  return rc::gen::arbitrary<std::string>();
 }
 
 auto vector_of_ints_to_vector_of_strings(const std::vector<int>& numbers) {
