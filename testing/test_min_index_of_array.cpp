@@ -1,7 +1,3 @@
-#if 0
-// everything in the file
-
-
 
 #include <vector>
 #include <algorithm>
@@ -14,12 +10,22 @@ TEST(MinIndexOfArrayTests, SimpleMinIndexAtFrontOfArray) {
     /*
      * See if we can find the index of the minimum value when it is at the front of the array
      */
+    int array[] = {1, 2, 4, 8};
+    int len = 4;
+
+    int result = min_index_of_array(array, len);
+    EXPECT_EQ(0, result);
 }
 
 TEST(MinIndexOfArrayTests, SimpleMinIndexAtEndOfArray) {
     /*
      * See if we can find the index of the minimum value when it is at the end of the array
      */
+    int array[] = {5, 2, 9, -4};
+    int len = 4;
+
+    int result = min_index_of_array(array, len);
+    EXPECT_EQ(result,3);
 }
 
 TEST(MinIndexOfArrayTests, SimpleMinIndexAtMiddleOfArray) {
@@ -27,6 +33,11 @@ TEST(MinIndexOfArrayTests, SimpleMinIndexAtMiddleOfArray) {
      * See if we can find the index of the minimum value when it is somewhere
      * in the "middle" of the array.
      */
+      int array[] = {5, -2, 9, 4};
+      int len = 4;
+
+      int result = min_index_of_array(array, len);
+      EXPECT_EQ(result,1);
 }
 
 TEST(MinIndexOfArrayTests, SimpleDuplicateMinimums) {
@@ -34,12 +45,27 @@ TEST(MinIndexOfArrayTests, SimpleDuplicateMinimums) {
      * See if we return the index of the first minimum in the array
      * When there are multiple values that are the minimum.
      */
+    int array[] = {5, 2, 9, 2, 4};
+    int len = 5;
+
+    int result = min_index_of_array(array, len);
+
+    EXPECT_EQ(result,1);
 }
 
 TEST(MinIndexOfArrayTests, SimpleArrayDoesNotChange) {
     /*
      * Check that finding the minimum of the array did not change the contents of the array.
      */
+    int array[] = {5, 3, 9, 1};
+    int before_changes[] = {5, 3, 9, 1};
+    int len = 4;
+
+    (void)min_index_of_array(array, len);
+
+    for (int i = 0; i < len; i++) {
+        EXPECT_EQ(before_changes[i], array[i]);
+    }
 }
 
 
@@ -60,4 +86,3 @@ RC_GTEST_PROP(MinIndexOfArrayTests,
 }
 
 
-#endif
