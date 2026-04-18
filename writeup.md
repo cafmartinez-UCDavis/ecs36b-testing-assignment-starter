@@ -1,6 +1,6 @@
 # Google Test And Debugging Writeup
 
-##### Project helpers: Copilot, for explanations and walking me through the instructions, specifically when getting started and how to comment out all other files to focus on one test case and testing file at a time.
+##### Project helpers: Copilot, for explanations and walking me through the instructions, specifically when getting started and how to comment out all other files to focus on one test case and testing file at a time, Asking professor for help, and Google AI explainations 
 
 ## Things I Thought To Test
 1. Thing 1: I want to confirm whether the sorting algorith works in the first place.
@@ -103,75 +103,49 @@ void swap(int* a, int* b) {
 ### Location
 
 Line number(s) of the bugs.
-
+29-39 in the sorting.ccp file
 ```c++
 Copy of the buggy code
+int* copy_array(int* ar, int len) {
+  /**
+  * Return a copy of the array
+  * @param ar: The array to copy
+  * @param len: The length of the array to copy
+  * @return: A copy of ar
+  */
+  
+  int* copy = ar;
+  return copy;
+}
 ```
 
 ### How the bug was located
 
-Explain how you found the bug
+Explain how you found the bug: I found the bug as while running my test cases in test_copy my array was not being copied but the pointer was.
 
 ### Description
 
 Describe the bug
 
-### Fix
-
-Explain how you fixed the bug
-
-```c++
-Copy of the fixed code
-```
-
-### Bug 4
-
-### Location
-
-Line number(s) of the bugs.
-
-```c++
-Copy of the buggy code
-```
-
-### How the bug was located
-
-Explain how you found the bug
-
-### Description
-
-Describe the bug
+The code was not creating a copy of the array and just assigning something else with the pointer value making it pass some test cases but failing those that tested the contents
 
 ### Fix
 
-Explain how you fixed the bug
+Explain how you fixed the bug: i fixed the bug by fixing creating a copy array with memory allocated to it then itterating over the previous array and putting it into the new array index by index
 
 ```c++
-Copy of the fixed code
-```
-
-### Bug 5
-
-### Location
-
-Line number(s) of the bugs.
-
-```c++
-Copy of the buggy code
-```
-
-### How the bug was located
-
-Explain how you found the bug
-
-### Description
-
-Describe the bug
-
-### Fix
-
-Explain how you fixed the bug
-
-```c++
-Copy of the fixed code
+Copy of the fixed code:
+int* copy_array(int* ar, int len) {
+  /**
+  * Return a copy of the array
+  * @param ar: The array to copy
+  * @param len: The length of the array to copy
+  * @return: A copy of ar
+  */
+  int* copy = new int[len];
+  for (int i = 0; i < len; ++i) {
+    copy[i] = ar[i];
+  }
+  return copy;
+}
 ```
