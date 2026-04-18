@@ -15,14 +15,9 @@ int* get_sorted(int* ar, int len) {
 }
 
 void make_sorted(int* ar, int len) {
-  /**
- * Sort the given array in place.
- * @param ar: The array to be sorted.
- * @param len: The length of the array to be sorted.
- */
   for (int i = 0; i < len; ++i) {
-    int min_index = min_index_of_array(ar + i, len);
-    swap(ar + i, ar + min_index);
+    int min_index = min_index_of_array(ar + i, len-i);
+    swap(ar + i, ar + i + min_index);
   }
 }
 
